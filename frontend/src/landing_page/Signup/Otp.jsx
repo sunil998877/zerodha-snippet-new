@@ -21,7 +21,7 @@ export default function Otp() {
             const phoneNumber = localStorage.getItem("phone");
             const phoneWithCountryCode = `+91${phoneNumber}`;
             
-            const response = await axios.post("http://localhost:3001/verify-otp", { 
+            const response = await axios.post("https://zerodha-snippet-backend.vercel.app/verify-otp", { 
                 phone: phoneWithCountryCode, 
                 code: otp 
             });
