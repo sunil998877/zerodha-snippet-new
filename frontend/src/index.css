@@ -712,18 +712,28 @@ a {
 
 
 /* // responsive */
-@media (min-width: 640px) {
+
+@media (max-width: 480px) {
+  /* iPhone 14 Pro jaisi screens */
     .img-signup{
       position: relative;
-      bottom: 2rem;
+      bottom: 5rem;
     }
+}
+/* for tablet */
 
+/* Small laptops */
+
+
+
+@media (min-width: 640px) {
+   
 }
 
 /* medium */
 @media (min-width: 768px){
   
-}
+} 
 
 /* large */
 @media (min-width: 1024px){
