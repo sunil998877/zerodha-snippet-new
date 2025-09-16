@@ -15,7 +15,7 @@ function HomePage() {
         <Pricing/>
         <Education/>
         <OpenAccount/>
-        /* Vector */
+        
 
         <div className="container-fluid vector">
             
