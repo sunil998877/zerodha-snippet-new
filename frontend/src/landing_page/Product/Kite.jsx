@@ -14,7 +14,7 @@ const Kite = () => {
                 </div>
                 <div className="col-1"></div>
                 <div className="col-md-4 mt-5 ">
-                    <h3 className='fs-4 opacity'>Kite</h3>
+                    <h4 className='fs-4 opacity'>Kite</h4>
                     <p className='text-muted mt-4'>
                     Our ultra-fast flagship trading platform with <br /> streaming market data, advanced charts, an <br /> elegant UI, and more. Enjoy the Kite <br /> experience seamlessly on your Android and <br />iOS devices. 
                     </p>

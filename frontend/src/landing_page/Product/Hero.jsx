@@ -3,9 +3,9 @@ function Hero() {
        <div className="container Hero-product">
         <div className="row text-center">
             <div className="col-md-12">
-                <h3 className="mt-Products">
+                <h4 className="mt-Products">
                 Zerodha Products
-                </h3>
+                </h4>
                 <p className="fs-5">
                 Sleek, modern, and intuitive trading platforms 
                 </p>

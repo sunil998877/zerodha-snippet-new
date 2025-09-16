@@ -7,7 +7,7 @@ const Console = () => {
         <div className="container Hero-console">
             <div className="row mx-2 ">
             <div className="col-md-4 mt-console ">
-                    <h3 className='fs-4 opacity'>Console</h3>
+                    <h4 className='fs-4 opacity'>Console</h4>
                     <p className='text-muted mt-4'>
                     The central dashboard for your Zerodha <br /> account. Gain insights into your trades and <br /> investments with in-depth reports and <br /> visualisations.
                     </p>

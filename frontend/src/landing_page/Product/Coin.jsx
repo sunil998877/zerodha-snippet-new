@@ -14,7 +14,7 @@ const Coin = () => {
                 </div>
                 <div className="col-1"></div>
                 <div className="col-md-4 mt-5 ">
-                    <h3 className='fs-4 opacity'>Coin</h3>
+                    <h4 className='fs-4 opacity'>Coin</h4>
                     <p className='text-muted mt-4'>
                     Buy direct mutual funds online, commission- <br />free, delivered directly to your Demat <br /> account. Enjoy the investment experience <br /> on your Android and iOS devices. 
                     </p>
