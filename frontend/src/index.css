@@ -713,7 +713,10 @@ a {
 
 /* // responsive */
 @media (min-width: 640px) {
-    
+    .img-signup{
+      position: relative;
+      bottom: 2rem;
+    }
 
 }
 
