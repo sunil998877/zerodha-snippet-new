@@ -1,0 +1,86 @@
+
+ h3{
+    color: white;
+    
+
+} 
+.signup-form{
+    color: white;
+    width: 28rem;
+    height: 100%;
+    overflow: hidden;
+    background-color:rgb(61, 54, 92);
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border: 1px solid rgb(235, 235, 235);
+    position: relative;
+    /* bottom: 85px; */
+   
+}
+.container{
+    height: 100% !important;
+    width: 100% !important;
+}
+.form{
+    margin-top:30px ;
+    margin-bottom: 28px;
+    margin-left: 30px;
+    margin-right:30px;
+}
+.github,
+.google{
+    width: 12rem;
+    border-radius: 8px;
+    /* background-color: rgb(52, 52, 52); oklch(0.205 0 0) */
+    color: rgb(251, 251, 251); /* oklch(0.985 0 0) */
+    /* border: 1px solid white; */
+}
+
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-size: small;
+  }
+  
+  .divider::before,
+  .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid white;
+  }
+  .divider:not(:empty)::before {
+    margin-right: 0.75em;
+  }
+  
+  .divider:not(:empty)::after {
+    margin-left: 0.75em;
+  }
+  .create-account{
+    width: 100% !important;
+  }
+  .input-field{
+  background-color: rgb(61, 54, 92); 
+  color: white;/* oklch(0.922 0 0) */
+  
+  } 
+  .input-field:hover{
+    background-color:rgb(61, 54, 92) !important;
+    color: white;
+  }
+  .input-field:active{
+    background-color:rgb(61, 54, 92) !important;
+  }
+  .input-field:focus-visible{
+    background-color:rgb(61, 54, 92) !important ;
+    color: white;
+  }
+  .label-input{
+    position: relative;
+    top: 4px;
+    font-size: 14px;
+  }
