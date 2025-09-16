@@ -22,16 +22,16 @@ const PORT = process.env.PORT || 3001;
 // mongodb connection
 connectDB();
 // CORS configuration for production
-const corsOptions = {
-    origin: process.env.NODE_ENV === 'production' 
-        ? [process.env.FRONTEND_URL, process.env.DASHBOARD_URL] 
-        : ["http://localhost:5173", "http://localhost:3000"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-    optionsSuccessStatus: 200
-};
+// const corsOptions = {
+//     origin: process.env.NODE_ENV === 'production' 
+//         ? [process.env.FRONTEND_URL, process.env.DASHBOARD_URL] 
+//         : ["http://localhost:5173", "http://localhost:3000"],
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     credentials: true,
+//     optionsSuccessStatus: 200
+// };
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.json());
 
 
