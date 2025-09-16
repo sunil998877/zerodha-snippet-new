@@ -341,10 +341,19 @@ body {
   
 }
 #number{
--webkit-appearance: textfield;
-  -moz-appearance: textfield;
-  
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
+
+
+}
+#input[type=number] {
+  -moz-appearance: textfield;
+}  
+  
+
 .btn-position{
   margin-top: 35px;
 }
