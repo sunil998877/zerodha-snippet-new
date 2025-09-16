@@ -9,7 +9,7 @@ function Unbeatable() {
                 </div>
                 <div className="col-md-6">
                     <div>
-                        <h3 className="text-start fs-5 opacity">Unbeatable pricing</h3>
+                        <h3 className="text-start fs-5 ">Unbeatable pricing</h3>
                         <p className="text-start mt-4 text-muted">Zero charges for equity & mutual fund investments. Flat ₹20 fees for <p className="mt-2 mb-5">intraday and F&O trades.</p></p>
                     </div>
                      <div>
