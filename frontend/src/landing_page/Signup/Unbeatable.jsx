@@ -5,7 +5,7 @@ function Unbeatable() {
                 
                 <div className="col-md-6">
                     <img src="\media\acop-benefits.svg" alt=""  className="img-fluid image-middle" style={{width:"340px"}}/>
-                    <h3 className="fs-4 opacity mt-5">Benefits of opening a Zerodha demat account </h3>
+                    <h4 className="fs-4 opacity mt-5">Benefits of opening a Zerodha demat account </h4>
                 </div>
                 <div className="col-md-6">
                     <div>

@@ -3,9 +3,9 @@ function Steps() {
           <div className="bg-light light-height">
             <div className="container  Hero media1" >
                 <div className="row mx  text-center ">
-                    <h3 className="mt-5 fs-4 opacity">Steps to open a demat account with Zerodha </h3>
+                    <h4 className="mt-5 fs-4 opacity">Steps to open a demat account with Zerodha </h4>
                     <div className="col-md-6 d-flex justify-content-center mt-5 ">
-                        <img src="public\media\steps-acop.svg" alt=""  className="img-fluid" style={{width:"400px"}}/>
+                        <img src="\media\steps-acop.svg" alt=""  className="img-fluid" style={{width:"400px"}}/>
                     </div>
                   
                    
