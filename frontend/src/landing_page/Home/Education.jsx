@@ -3,7 +3,7 @@ function Education() {
         <div className="container Hero">
             <div className="row">
                 <div className="col-md-6 ">
-                    <img src="public\media\education.svg" alt=""className="img-fluid" style={{width:"450px"}}/>
+                    <img src="\media\education.svg" alt=""className="img-fluid" style={{width:"450px"}}/>
                 </div>
                 <div className="col-md-6 mt-4">
                     <h1 className="fs-4 opacity">Free and open market education</h1>

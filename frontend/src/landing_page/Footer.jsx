@@ -4,7 +4,7 @@ function Footer() {
         <div className="container    mt-4 ">
             <div className="row   mt-4 ">
                 <div className="col-md  m-2 ">
-                    <img src="public/media/logo.svg " alt="" className=" " style={{ width: "170px" }} />
+                    <img src="\media\logo.svg " alt="" className=" " style={{ width: "170px" }} />
                     <p className="font-size mt-3 text-muted">&copy; 2010 -2025, Zerodha Broking Ltd. All rights reserved.</p>
                     <div className="">
                         <a href="" className="link2 text-muted"><i class="fa-brands fa-x-twitter"></i></a>
