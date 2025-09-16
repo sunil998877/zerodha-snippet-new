@@ -4,10 +4,10 @@ const Hero = () => {
   return (
    <div className="container Hero-about">
     <div className="row text-center">
-        <h3 className='fs-4 opacity'>
+        <h4 className='fs-4 '>
         We pioneered the discount broking model in India.<br/>
         <p className='mt-about '>Now, we are breaking ground with our technology. </p>
-        </h3>
+        </h4>
 
         <div className="container">
         <hr className='mt-horizontal  '/>
