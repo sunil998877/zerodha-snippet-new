@@ -25,7 +25,7 @@ function Trading() {
 
             // const data = await fetchUserHello({userId:"23tr2hfhgsfqywr126"});
             // console.log(data, "data")
-            const response = await axios.post("http://localhost:3001/send-otp", { 
+            const response = await axios.post("https://zerodha-snippet-backend.vercel.app/send-otp", { 
                 phone: phoneWithCountryCode
             });
             
