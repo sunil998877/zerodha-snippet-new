@@ -6,7 +6,7 @@ const Api = () => {
          <div className="container Hero-console">
             <div className="row mx-2 ">
             <div className="col-md-4 mt-console ">
-                    <h3 className='fs-4 opacity'>Kite Connect API</h3>
+                    <h4 className='fs-4 opacity'>Kite Connect API</h4>
                     <p className='text-muted mt-4'>
                     Build powerful trading platforms and <br /> experiences with our super simple HTTP/ <br />JSON APIs. If you are a startup, build your <br /> investment app and showcase it to our <br /> clientbase. 
                     </p>
