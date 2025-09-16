@@ -4,7 +4,7 @@ const Hero = () => {
   return (
    <div className="container Hero-about">
     <div className="row text-center">
-        <h4 className='fs-4 '>
+        <h4 className='fs-4 opacity'>
         We pioneered the discount broking model in India.<br/>
         <p className='mt-about '>Now, we are breaking ground with our technology. </p>
         </h4>
