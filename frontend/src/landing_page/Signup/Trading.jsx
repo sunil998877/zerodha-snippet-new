@@ -64,7 +64,7 @@ function Trading() {
                 <div className="row   top1  margin ">
 
                     <div className="col-md-6   ">
-                        <img src="public\media\account_open.svg" alt="" className="img-fluid img " />
+                        <img src="\media\account_open.svg" alt="" className="img-fluid img " />
                     </div>
                     {/* <div className="col-1"></div> */}
                     <div className="col-md-6  application   mt-5">
@@ -72,7 +72,7 @@ function Trading() {
                         <p className="text-start text-muted">Or track your existing application</p>
                         <div class="mobile-input trading">
                             <span class="country-code">
-                                <img src="public\media\india-flag.svg" alt="India Flag" />&nbsp; +91
+                                <img src="\media\india-flag.svg" alt="India Flag" />&nbsp; +91
 
                             </span>
 
