@@ -4,12 +4,12 @@ const People = () => {
   return (
     <div>
         <div className="container Hero-people">
-        <h3 className='opacity text-center fs-4'>People</h3>
+        <h4 className='opacity text-center fs-4'>People</h4>
             <div className="row margin-x-people">
              <div className="col-md-5 mt-people   margin-x-left">
                   <img src="\media\nithinKamath.jpg" alt=""   className='nithin-img img-fluid '/>
                   <div className='name-founder'>
-                  <h3 className='text-center fs-5 opacity'>Nithin Kamath</h3>
+                  <h4 className='text-center fs-5 opacity'>Nithin Kamath</h4>
                   <p className='text-center mt-3 text-muted'>Founder, CEO</p>
                   </div>
               </div>
