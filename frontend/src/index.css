@@ -722,23 +722,14 @@ a {
     transform: translateY(0);
   }
 }
-.alert-container-1{
-  position: fixed;
-  top: 20px;       /* Top se thoda neeche */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1050;   /* Always above navbar & content */
-  width: 20%;
-  max-width: 500px;
 
-}
 .btn-close{
   position: relative;
-  left: 6% !important;
+  left: 4% !important;
 }
 strong{
   position: relative;
-  right: 6% !important;
+  right: 4% !important;
 
 }
 

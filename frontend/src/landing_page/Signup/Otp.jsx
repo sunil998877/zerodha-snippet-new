@@ -77,11 +77,7 @@ export default function Otp() {
                         ></button>
                     </div>
                 )}
-                </div>
-
-            <div className="alert-container-1">
-              
-                 {loading && (
+                {loading && (
                     <div className="alert alert-warning slide-down" role="alert">
                         <strong>Loading...</strong>
                         <button
@@ -92,8 +88,9 @@ export default function Otp() {
                         ></button>
                     </div>
                 )}
+                </div>
 
-            </div>
+            
 
 
         </div>
