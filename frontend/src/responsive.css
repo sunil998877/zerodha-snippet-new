@@ -1,0 +1,475 @@
+/* ===========================================
+   RESPONSIVE CSS BREAKPOINTS
+   =========================================== */
+
+/* Mobile First Approach - Base styles for mobile */
+
+/* Extra Small devices (phones, 320px and up) */
+@media (min-width: 320px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .hero-title {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .navbar-nav {
+    margin-left: 0;
+    text-align: center;
+  }
+  
+  .nav-link {
+    margin: 5px 0;
+    padding: 8px 15px;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .container {
+    padding: 0 20px;
+  }
+  
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .btn {
+    width: auto;
+    padding: 12px 24px;
+  }
+  
+  .mobile-input {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .container {
+    padding: 0 30px;
+  }
+  
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .navbar-nav {
+    margin-left: 2rem;
+    text-align: left;
+  }
+  
+  .nav-link {
+    margin: 0 15px;
+  }
+  
+  .row-cols-2 {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .mobile-input {
+    width: 430px;
+  }
+  
+  .otp-input {
+    width: 100%;
+  }
+  
+  .signup-form {
+    position: relative;
+    top: 0;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .container {
+    padding: 0 40px;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .navbar-nav {
+    margin-left: 30rem;
+  }
+  
+  .margin {
+    margin-left: 52px;
+  }
+  
+  .acop-steps-text {
+    font-size: 20px !important;
+  }
+  
+  .signup-form {
+    position: relative;
+    bottom: 15%;
+  }
+}
+
+/* Extra Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .container {
+    padding: 0 50px;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.3rem;
+  }
+  
+  .signup-form {
+    position: relative;
+    bottom: 5%;
+  }
+}
+
+/* Extra Extra Large devices (1400px and up) */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
+  }
+}
+
+/* ===========================================
+   SPECIFIC COMPONENT RESPONSIVE STYLES
+   =========================================== */
+
+/* Navigation Responsive */
+@media (max-width: 991px) {
+  .navbar-nav {
+    margin-left: 0;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .nav-link {
+    margin: 10px 0;
+    display: block;
+  }
+}
+
+/* Hero Section Responsive */
+@media (max-width: 768px) {
+  .Hero {
+    margin-top: 100px;
+  }
+  
+  .Hero1 {
+    margin-top: 20px;
+  }
+  
+  .Hero2 {
+    margin-top: 100px;
+  }
+  
+  .Hero-about {
+    margin-top: 120px;
+  }
+  
+  .Hero-product {
+    margin-top: 120px;
+  }
+  
+  .Hero-console {
+    margin-top: 60px;
+  }
+}
+
+/* Form Responsive */
+@media (max-width: 768px) {
+  .application {
+    position: relative;
+    left: 0;
+  }
+  
+  .signup-form {
+    position: relative;
+    top: -20px;
+  }
+  
+  .otp-btn {
+    width: 100% !important;
+  }
+  
+  .invest {
+    display: flex;
+    flex-direction: column !important;
+  }
+  
+  .mobile-input {
+    width: 100%;
+  }
+  
+  .otp-input {
+    width: 80%;
+  }
+  
+  #number {
+    font-size: 16px;
+  }
+}
+
+/* Footer Responsive */
+@media (max-width: 768px) {
+  .footer-row {
+    padding: 40px 20px;
+  }
+  
+  .column {
+    margin-left: 0;
+    margin-bottom: 30px;
+  }
+  
+  .link i {
+    font-size: 18px;
+  }
+}
+
+/* Card Components Responsive */
+@media (max-width: 800px) {
+  .acop-type-card {
+    display: block !important;
+    width: 90%;
+    margin: 0 auto 30px auto;
+  }
+  
+  .row {
+    margin-bottom: 20px;
+  }
+  
+  .account-card {
+    margin-bottom: 20px;
+  }
+}
+
+/* Pricing Section Responsive */
+@media (max-width: 768px) {
+  .pricing {
+    margin-top: 60px;
+  }
+  
+  .pricing1 {
+    position: relative;
+    left: 0;
+    text-align: center;
+  }
+}
+
+/* Image Responsive */
+@media (max-width: 768px) {
+  .images {
+    width: 80px;
+  }
+  
+  .size-image {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+  }
+  
+  .nithin-img {
+    width: 200px;
+  }
+  
+  .nithin-image {
+    width: 180px;
+  }
+}
+
+/* Text Responsive */
+@media (max-width: 768px) {
+  .text {
+    position: static;
+    text-align: center;
+    margin: 10px 0;
+  }
+  
+  .text1, .text2 {
+    font-size: 0.8rem;
+  }
+  
+  .font-size3 {
+    text-align: center !important;
+  }
+  
+  .acop-steps-text {
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 350px) {
+  .acop-steps-text {
+    font-size: 14px !important;
+  }
+}
+
+/* Layout Responsive */
+@media (max-width: 1000px) {
+  .trading {
+    width: 100% !important;
+  }
+  
+  .signup-form {
+    position: relative;
+    bottom: 80px !important;
+  }
+  
+  .mx {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  
+  .position5 {
+    width: 100% !important;
+  }
+}
+
+/* About Page Responsive */
+@media (max-width: 768px) {
+  .margin-x-about {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 60px;
+  }
+  
+  .margin-x-people {
+    margin-left: 0;
+  }
+  
+  .margin-x-left {
+    position: relative;
+    left: 0;
+  }
+  
+  .name-founder {
+    position: relative;
+    right: 0;
+  }
+  
+  .box-author {
+    width: 100%;
+  }
+}
+
+/* Product Page Responsive */
+@media (max-width: 768px) {
+  .mt-Products {
+    position: relative;
+    bottom: 0;
+  }
+  
+  .mt-investment {
+    position: relative;
+    top: 0;
+  }
+  
+  .mt-console {
+    margin-top: 6rem;
+  }
+}
+
+/* Utility Classes for Responsive Design */
+.d-none-mobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .d-none-mobile {
+    display: block;
+  }
+}
+
+.d-mobile-only {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .d-mobile-only {
+    display: none;
+  }
+}
+
+/* Responsive Spacing */
+@media (max-width: 768px) {
+  .mt-mb {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+  }
+  
+  .mt1 {
+    margin-top: 80px;
+  }
+  
+  .mt-people {
+    margin-top: 40px;
+  }
+  
+  .Hero-people {
+    margin-top: 50px;
+  }
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .font-size {
+    font-size: 10px;
+  }
+  
+  .font {
+    font-size: 12px;
+  }
+  
+  .size {
+    font-size: 15px;
+  }
+}
+
+/* Responsive Borders and Shadows */
+@media (max-width: 768px) {
+  .page {
+    width: 95%;
+    padding: 15px;
+  }
+  
+  .padding {
+    padding: 20px 15px;
+  }
+}
