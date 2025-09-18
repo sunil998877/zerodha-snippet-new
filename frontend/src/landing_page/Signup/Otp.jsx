@@ -6,29 +6,29 @@ import axios from 'axios'
 
 
 export default function Otp() {
-    const [otp,setOtp] = useState("")
-    const [isVerified,setIsVerified] = useState(false)
-    const navigate = useNavigate()  
-    const [error,setError] = useState("")
-    const [loading,setLoading] = useState(false)
+    const [otp, setOtp] = useState("")
+    const [isVerified, setIsVerified] = useState(false)
+    const navigate = useNavigate()
+    const [error, setError] = useState("")
+    const [loading, setLoading] = useState(false)
     const handleVerifyOtp = async () => {
         setLoading(true);
         setError("");
         setIsVerified(false);
-       
+
 
         try {
             const phoneNumber = localStorage.getItem("phone");
             const phoneWithCountryCode = `+91${phoneNumber}`;
-            
-            const response = await axios.post("https://zerodha-snippet-backend.vercel.app/verify-otp", { 
-                phone: phoneWithCountryCode, 
-                code: otp 
+
+            const response = await axios.post("https://zerodha-snippet-backend.vercel.app/verify-otp", {
+                phone: phoneWithCountryCode,
+                code: otp
             });
-            
+
             console.log(response.data);
-            
-            if(response.data.success) {
+
+            if (response.data.success) {
                 setIsVerified(true);
                 alert("OTP verified successfully!");
                 navigate("/signup_auth");
@@ -44,18 +44,23 @@ export default function Otp() {
         finally {
             setLoading(false)
         }
-       
+
     }
     return (
         <div className='d-flex flex-row align-items-center justify-content-start mt-3'>
-            
-            <input type="number" placeholder='Enter Otp' value={otp} onChange={(e) => setOtp(e.target.value)}  style={{width:"200px" , height:"45px"}} className='form-control otp-input'/>
-            <button onClick={handleVerifyOtp}  disabled={loading}  className='btn btn-primary ms-3 ' style={{height:"45px"}}>   <br />  {loading ? "Verifying..." : "Verify OTP"}</button>
 
-            {isVerified && <p>OTP verified successfully</p>}
-            {error && <p>{error}</p>}
+            <input type="number" placeholder='Enter Otp' value={otp} onChange={(e) => setOtp(e.target.value)} style={{ width: "200px", height: "45px" }} className='form-control otp-input' />
+            <button onClick={handleVerifyOtp} disabled={loading} className='btn btn-primary ms-3 ' style={{ height: "45px" }}>   <br />  {loading ? "Verifying..." : "Verify OTP"}</button>
+
+
+
+            <div class="alert alert-success" role="alert">
+               {isVerified && <p>OTP verified successfully</p>}
+            </div>
+            {/* {isVerified && <p>OTP verified successfully</p>} */}
+            {error && alert}
             {loading && <p>Loading...</p>}
-            
+
         </div>
     )
 }
