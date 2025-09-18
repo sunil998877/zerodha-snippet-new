@@ -54,12 +54,24 @@ export default function Otp() {
 
 
 
-            <div class="alert alert-success" role="alert">
-               {isVerified && <p>OTP verified successfully</p>}
-            </div>
-            {/* {isVerified && <p>OTP verified successfully</p>} */}
-            {error && alert}
-            {loading && <p>Loading...</p>}
+            {isVerified && (
+                <div className="alert alert-success" role="alert">
+                    ✅ OTP verified successfully
+                </div>
+            )}
+
+            {error && (
+                <div className="alert alert-danger" role="alert">
+                    ❌ {error}
+                </div>
+            )}
+
+            {loading && (
+                <div className="alert alert-warning" role="alert">
+                    ⏳ Loading...
+                </div>
+            )}
+
 
         </div>
     )
