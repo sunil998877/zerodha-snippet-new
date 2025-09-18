@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-function Hero() {
 
+function Hero() {
+ 
     return ( 
         <div className="container text-md-center     Hero">
             <div className="row d-flex justify-content-center mt-2 ">
