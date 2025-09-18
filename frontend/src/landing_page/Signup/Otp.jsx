@@ -55,28 +55,47 @@ export default function Otp() {
 
 
             <div className="alert-container">
+                  {error && (
+                    <div className="alert alert-danger slide-down" role="alert">
+                        <strong>{error}</strong>
+                        <button
+                            type="button"
+                            className="btn-close"
+                            data-bs-dismiss="alert"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                )}
                 {isVerified && (
                     <div className="alert alert-success slide-down" role="alert">
-                         OTP verified successfully
+                        <strong>OTP verified successfully</strong>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="alert"
+                            aria-label="Close"
+                        ></button>
                     </div>
                 )}
+                </div>
 
-                {error && (
-                    <div className="alert alert-danger slide-down" role="alert">
-                         {error}
-                    </div>
-                )}
-
-                {loading && (
+            <div className="alert-container-1">
+              
+                 {loading && (
                     <div className="alert alert-warning slide-down" role="alert">
-                        Loading...
+                        <strong>Loading...</strong>
+                        <button
+                            type="button"
+                            className="btn-close"
+                            data-bs-dismiss="alert"
+                            aria-label="Close"
+                        ></button>
                     </div>
                 )}
 
-            
             </div>
-            
 
-    </div>
+
+        </div>
     );
 }
