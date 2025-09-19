@@ -39,11 +39,14 @@ function Trading() {
                 } else if (response.data.message && response.data.message.includes("fallback")) {
                     alert("Network issue detected. Fallback OTP generated! Check the backend console for the OTP code.");
                 } else {
-                    // alert("OTP sent successfully to your mobile number!");
-                     <div class="alert alert-warning alert-dismissible fade show d-flex justify-content-center" role="alert">
+                    alert(
+                        <div class="alert alert-warning alert-dismissible fade show d-flex justify-content-center" role="alert">
+                        
                         <strong>OTP sent successfully to your mobile number!</strong>
                         
                     </div>
+                    );
+                     
                 }
             } else {
                 alert("Failed to send OTP: " + response.data.message);
