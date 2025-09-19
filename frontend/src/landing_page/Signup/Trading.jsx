@@ -39,7 +39,11 @@ function Trading() {
                 } else if (response.data.message && response.data.message.includes("fallback")) {
                     alert("Network issue detected. Fallback OTP generated! Check the backend console for the OTP code.");
                 } else {
-                    alert("OTP sent successfully to your mobile number!");
+                    // alert("OTP sent successfully to your mobile number!");
+                     <div class="alert alert-warning alert-dismissible fade show d-flex justify-content-center" role="alert">
+                        <strong>OTP sent successfully to your mobile number!</strong>
+                        
+                    </div>
                 }
             } else {
                 alert("Failed to send OTP: " + response.data.message);
@@ -73,7 +77,6 @@ function Trading() {
                         <div class="mobile-input trading">
                             <span class="country-code">
                                 <img src="\media\india-flag.svg" alt="India Flag" />&nbsp; +91
-
                             </span>
 
                             <input type="number" autoFocus="" id="number" name="number" placeholder="Enter your mobile number " value={phone} onChange={(e) => setphone(e.target.value)} required />
