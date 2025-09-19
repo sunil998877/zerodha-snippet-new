@@ -700,11 +700,11 @@ a {
 }
 .alert-container {
   position: fixed;
-  top: 20px;       /* Top se thoda neeche */
+  top: 75px;       /* Top se thoda neeche */
   left: 50%;
   transform: translateX(-50%);
   z-index: 1050;   /* Always above navbar & content */
-  width: 90%;
+  width: 50%;
   max-width: 500px;
 }
 
@@ -722,16 +722,16 @@ a {
     transform: translateY(0);
   }
 }
-
-/* .btn-close{
-  position: relative;
-  left: 4% !important;
+.trading-otp{
+    width: 50% !important;
+    
+    height: 50px !important;
 }
-strong{
-  position: relative;
-  right: 4% !important;
+.Otp-verified{
+  width: 30% !important;
+  margin-left: 20px ;
+}
 
-} */
 
 
 

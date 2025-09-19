@@ -48,56 +48,34 @@ export default function Otp() {
     }
     return (
         <div className='d-flex flex-row align-items-center justify-content-start mt-3'>
-
-            <input type="number" placeholder='Enter Otp' value={otp} onChange={(e) => setOtp(e.target.value)} style={{ width: "200px", height: "45px" }} className='form-control otp-input' />
-            <button onClick={handleVerifyOtp} disabled={loading} className='btn btn-primary ms-3 ' style={{ height: "45px" }}>   <br />  {loading ? "Verifying..." : "Verify OTP"}</button>
+        <div class="mobile-input trading-otp mt-3">
+                <input type="number" autoFocus="" id="number" name="number" placeholder="Enter Otp " value={otp} onChange={(e) => setOtp(e.target.value)} required />
+            </div>
+            
+            <button className="otp-btn btn  btn-color btn-position  opacity   fs-5  rounded-1   custom-hover trading mt-3 Otp-verified" style={{ width: "255px", height: "50px" }} onClick={handleVerifyOtp}>{loading ? "Verifying..." : "Verify OTP"}</button>
 
 
 
             <div className="alert-container">
                 {error && (
-                    // <div className="alert alert-danger slide-down" role="alert">
-                    //     <strong>{error}</strong>
-                    //     <button
-                    //         type="button"
-                    //         className="btn-close"
-                    //         data-bs-dismiss="alert"
-                    //         aria-label="Close"
-                    //     ></button>
-                    // </div>
-                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>{error}</strong> 
+
+                    <div class="alert alert-warning alert-dismissible fade show d-flex justify-content-between" role="alert">
+                        <strong>{error}</strong>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                    
+
                 )}
                 {isVerified && (
-                    // <div className="alert alert-success slide-down" role="alert">
-                    //     <strong>OTP verified successfully</strong>
-                    //     <button
-                    //         type="button"
-                    //         class="btn-close"
-                    //         data-bs-dismiss="alert"
-                    //         aria-label="Close"
-                    //     ></button>
-                    // </div>
-                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>OTP verified successfully</strong> 
+
+                    <div class="alert alert-warning alert-dismissible fade show d-flex justify-content-between" role="alert">
+                        <strong>OTP verified successfully</strong>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 )}
                 {loading && (
-                    // <div className="alert alert-warning slide-down" role="alert">
-                    //     <strong>Loading...</strong>
-                    //     <button
-                    //         type="button"
-                    //         className="btn-close"
-                    //         data-bs-dismiss="alert"
-                    //         aria-label="Close"
-                    //     ></button>
-                    // </div>
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>Loading...</strong> 
+
+                    <div class="alert alert-warning alert-dismissible fade show d-flex justify-content-between" role="alert">
+                        <strong>Loading...</strong>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 )}
