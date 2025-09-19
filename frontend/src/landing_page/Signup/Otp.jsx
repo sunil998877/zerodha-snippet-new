@@ -30,11 +30,8 @@ export default function Otp() {
 
             if (response.data.success) {
                 setIsVerified(true);
-                // alert("OTP verified successfully!");
-                <div class="alert alert-warning alert-dismissible fade show d-flex justify-content-center" role="alert">
-                        <strong>OTP verified successfully!</strong>
-                        
-                    </div>
+                alert("OTP verified successfully!");
+             
             
                 navigate("/signup_auth");
             } else {
