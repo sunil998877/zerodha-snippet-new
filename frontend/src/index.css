@@ -750,6 +750,9 @@ a {
   width:150px !important;
   margin-left: 20px ;
 }
+.img-signup{
+  display: none !important;
+}
 
 }
 /* for tablet */
@@ -786,13 +789,23 @@ a {
   width:50% !important;
   margin-left: 20px ;
 }
+ .signup-form{
+     
+    position: relative;
+    bottom: 17%
+}
+.img-sign{
+  width: 80rem !important;
+}
 }
 
 /* large */
 @media (max-width: 1024px){
   .signup-form{
+    /* height: 20% !important; */
     position: relative;
-    bottom: 15%;
+    bottom: 1%;
+
   
   }
 
@@ -823,6 +836,11 @@ a {
     
     height: 50px !important;
 }
+ .signup-form{
+    position: relative;
+    bottom: 9% !important;
+  
+  }
 
 }
 
