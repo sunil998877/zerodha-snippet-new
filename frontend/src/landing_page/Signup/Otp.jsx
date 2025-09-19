@@ -55,42 +55,55 @@ export default function Otp() {
 
 
             <div className="alert-container">
-                  {error && (
-                    <div className="alert alert-danger slide-down" role="alert">
-                        <strong>{error}</strong>
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="alert"
-                            aria-label="Close"
-                        ></button>
+                {error && (
+                    // <div className="alert alert-danger slide-down" role="alert">
+                    //     <strong>{error}</strong>
+                    //     <button
+                    //         type="button"
+                    //         className="btn-close"
+                    //         data-bs-dismiss="alert"
+                    //         aria-label="Close"
+                    //     ></button>
+                    // </div>
+                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>{error}</strong> 
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
+                    
                 )}
                 {isVerified && (
-                    <div className="alert alert-success slide-down" role="alert">
-                        <strong>OTP verified successfully</strong>
-                        <button
-                            type="button"
-                            class="btn-close"
-                            data-bs-dismiss="alert"
-                            aria-label="Close"
-                        ></button>
+                    // <div className="alert alert-success slide-down" role="alert">
+                    //     <strong>OTP verified successfully</strong>
+                    //     <button
+                    //         type="button"
+                    //         class="btn-close"
+                    //         data-bs-dismiss="alert"
+                    //         aria-label="Close"
+                    //     ></button>
+                    // </div>
+                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>OTP verified successfully</strong> 
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 )}
                 {loading && (
-                    <div className="alert alert-warning slide-down" role="alert">
-                        <strong>Loading...</strong>
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="alert"
-                            aria-label="Close"
-                        ></button>
+                    // <div className="alert alert-warning slide-down" role="alert">
+                    //     <strong>Loading...</strong>
+                    //     <button
+                    //         type="button"
+                    //         className="btn-close"
+                    //         data-bs-dismiss="alert"
+                    //         aria-label="Close"
+                    //     ></button>
+                    // </div>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Loading...</strong> 
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 )}
-                </div>
+            </div>
 
-            
+
 
 
         </div>
