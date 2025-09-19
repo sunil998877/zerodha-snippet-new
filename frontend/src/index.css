@@ -750,9 +750,7 @@ a {
   width:150px !important;
   margin-left: 20px ;
 }
-.Otp-verified{
-  width: 30% !important;
-}
+
 }
 /* for tablet */
 
@@ -761,6 +759,11 @@ a {
   .Otp-verified{
   width:50% !important;
   margin-left: 20px ;
+}
+.trading-otp{
+    width:50% !important;
+    
+    height: 50px !important;
 }
   
 }
