@@ -722,14 +722,18 @@ a {
     transform: translateY(0);
   }
 }
-.trading-otp{
-    width: 50% !important;
+/* .trading-otp{
+    width:50% !important;
     
     height: 50px !important;
 }
 .Otp-verified{
   width: 30% !important;
   margin-left: 20px ;
+} */
+.container {
+  width: 100%;
+  padding: 10px;
 }
 
 
@@ -750,42 +754,78 @@ a {
       position: relative;
       bottom: 6rem;
     }
+    .Otp-verified{
+  width:150px !important;
+  margin-left: 20px ;
+}
 }
 /* for tablet */
 
 /* Small laptops */
+@media (max-width:640px) {
+  .Otp-verified{
+  width:50% !important;
+  margin-left: 20px ;
+}
+  
+}
 
 
 
 @media (min-width: 640px) {
-   
+   .Otp-verified{
+  width:50% !important;
+  margin-left: 20px ;
+}
 }
 
 /* medium */
 @media (min-width: 768px){
-  
-} 
+    .Otp-verified{
+  width:50% !important;
+  margin-left: 20px ;
+}
+}
 
 /* large */
-@media (min-width: 1024px){
+@media (max-width: 1024px){
   .signup-form{
     position: relative;
     bottom: 15%;
   
   }
+
+
+
+   
 }
-
-
-
-
-
-/* extra large */
-@media (min-width:1260px) {
-  .signup-form{
-    position: rel;
-    bottom: 5%;
-  }
- 
-
+@media screen and (min-width: 1200px) {
+  .Otp-verified{
+  width: 35% !important;
+  margin-left: 20px ;
+}
+.trading-otp{
+    width:45% !important;
     
+    height: 50px !important;
 }
+
+}
+
+@media screen and (min-width:1400px){
+   .Otp-verified{
+  width: 30% !important;
+  margin-left: 20px ;
+}
+.trading-otp{
+    width:40% !important;
+    
+    height: 50px !important;
+}
+
+}
+
+
+
+
+
