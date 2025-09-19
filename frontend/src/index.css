@@ -722,19 +722,11 @@ a {
     transform: translateY(0);
   }
 }
-/* .trading-otp{
-    width:50% !important;
-    
-    height: 50px !important;
-}
-.Otp-verified{
-  width: 30% !important;
-  margin-left: 20px ;
-} */
-/* .container {
+
+.container {
   width: 100%;
   padding: 10px;
-} */
+}
 
 
 
@@ -757,6 +749,9 @@ a {
     .Otp-verified{
   width:150px !important;
   margin-left: 20px ;
+}
+.Otp-verified{
+  width: 30% !important;
 }
 }
 /* for tablet */
