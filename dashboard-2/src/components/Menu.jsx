@@ -1,16 +1,29 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import axios from "axios";
+// import { useAuth } from "./userAuth";
 
 import { Link } from "react-router-dom";
 
 const Menu = () => {
+  // const [user,Loading] = useAuth();
+   const [user, setUser] = useState(null);
+  const [Loading, setLoading] = useState(true);
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+
+   useEffect(() => {
+       axios.get("http://localhost:3001/api/v1/auth/profile",{withCredentials:true})
+         .then(res => setUser(res.data))
+         .catch(() => setUser(null))
+         .finally(() => setLoading(false));
+     }, []);
+
 
   const handleMenuClick = (index) => {
     setSelectedMenu(index);
   };
 
-  const handleProfileClick = (index) => {
+  const handleProfileClick = () => {
     setIsProfileDropdownOpen(!isProfileDropdownOpen);
   };
 
@@ -90,10 +103,26 @@ const Menu = () => {
           </li>
         </ul>
         <hr className="border" /> 
-        <div className="profile" onClick={handleProfileClick}>
-          <div className="avatar ">ZU</div>
-          <p className="username">USERID</p>
-        </div>
+        {!Loading && (
+          user ? (
+            <div className="profile" onClick={handleProfileClick}>
+              <div className="avatar">
+                <img src={user.avatar || "/default-avatar.png"} alt="Profile" style={{ width: 40, borderRadius: "50%" }} />
+              </div>
+              <p className="username">{user.firstName}</p>
+
+              {isProfileDropdownOpen && (
+                <div className="dropdown">
+                  <Link to="/profile">My Profile</Link>
+                  <Link to="/logout">Logout</Link>
+                </div>
+              )}
+            </div>
+          ) : (
+            <a href="http://localhost:3001/api/v1/auth/google">Login with Google</a>
+          )
+        )}
+       
       </div>
     </div>
   );
