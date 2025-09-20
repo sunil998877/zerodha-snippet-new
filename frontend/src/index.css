@@ -750,8 +750,11 @@ a {
   width:150px !important;
   margin-left: 20px ;
 }
-.img-signup{
+.img-sign{
   display: none !important;
+}
+.container-signup{
+  width: 100% !important;
 }
 
 }
@@ -805,13 +808,7 @@ a {
     /* height: 20% !important; */
     position: relative;
     bottom: 1%;
-
-  
   }
-
-
-
-   
 }
 @media screen and (min-width: 1200px) {
   .Otp-verified{

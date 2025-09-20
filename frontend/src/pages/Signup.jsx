@@ -5,7 +5,7 @@ const Signup = () => {
 
     return (
         <>
-            <div className="container d-flex justify-content-center">
+            <div className="container container-signup d-flex justify-content-center">
                 <div className="signup-form     ">
 
                     <form className='form '>
