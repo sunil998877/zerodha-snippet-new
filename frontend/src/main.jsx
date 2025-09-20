@@ -20,12 +20,14 @@ import PageNotfound from './landing_page/PageNotfound.jsx'
 
 
 function AppRouter() {
-  const location = useLocation()
-  const hideChrome = location.pathname === '/signup_auth'
+  // const location = useLocation()
+  // const hideChrome = location.pathname === '/signup_auth'
   return (
     <>
-      {!hideChrome && <Navbar/>}
+      {/* {!hideChrome && <Navbar/>} */}
+      <Navbar/>
       <Routes>
+        
         <Route path="/" element={<HomePage />} />
         <Route path='/about' element={<AboutPage />} />
         <Route path="/pricing" element={<PricingPage />} />
@@ -35,8 +37,10 @@ function AppRouter() {
         <Route path="/signup_auth" element={<Signup/>} />
         <Route path="/support" element={<SupportPage />} />
         <Route path="*" element={<PageNotfound />} />
+        
       </Routes>
-      {!hideChrome && <Footer/>}
+      <Footer/>
+      {/* {!hideChrome && <Footer/>} */}
     </>
   )
 }

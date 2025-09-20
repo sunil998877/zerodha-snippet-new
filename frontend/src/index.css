@@ -753,8 +753,11 @@ a {
 .img-sign{
   display: none !important;
 }
-.container-signup{
-  width: 100% !important;
+.signup-form{
+  /* position: relative;
+  top: 40px !important; */
+  margin-top: 20% !important;
+
 }
 
 }
@@ -795,10 +798,11 @@ a {
  .signup-form{
      
     position: relative;
-    bottom: 17%
+    bottom: 5%
 }
 .img-sign{
   width: 80rem !important;
+  
 }
 }
 
@@ -833,11 +837,15 @@ a {
     
     height: 50px !important;
 }
+ .img-signup{
+  position: relative;
+  top: 2rem !important;
+ }
  .signup-form{
-    position: relative;
-    bottom: 9% !important;
-  
-  }
+  /* margin-bottom: 3rem !important; */
+  position: relative;
+  bottom: 7% !important;
+ }
 
 }
 
