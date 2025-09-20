@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import connectDB from "./config/db.js";
+import config from "./config/index.js";
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -14,31 +15,47 @@ import OrdersModel from "./model/OrdersModel.js";
 import { sendOTP } from "./twilio/sendOtp.js";
 import { verifyOtp } from "./twilio/verifyOtp.js";
 
+import session from "express-session";
+import passport from "passport";
+import { router } from "./routes/auth.route.js";
+import { route } from "./routes/auth.profile.js";
+import "./config/passport.js";
+
 
 
 const app = express();
 // if by default port is empty then 3001 port will work
-const PORT = process.env.PORT || 3001;
+const PORT = config.PORT.PORT || 3001;
 // mongodb connection
 connectDB();
-// CORS configuration for production
-// const corsOptions = {
-//     origin: process.env.NODE_ENV === 'production' 
-//         ? [process.env.FRONTEND_URL, process.env.DASHBOARD_URL] 
-//         : ["http://localhost:5173", "http://localhost:3000"],
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     credentials: true,
-//     optionsSuccessStatus: 200
-// };
 
-app.use(cors());
+
+// app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}));
 app.use(bodyParser.json());
 
+app.use(session({
+  secret: "your_secret",
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    secure: false,     
+    sameSite: "lax"   
+  }
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get("/", (req, res) => {
     res.send("server is running...");
 });
 
+app.use("/api/v1/auth",router);
+app.use("/api/v1/auth",route);
 
 //insert holding data
 // app.get("/addHoldings", async (req, res) => {
