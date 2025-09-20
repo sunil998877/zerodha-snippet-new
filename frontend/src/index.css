@@ -839,13 +839,18 @@ a {
 }
  .img-signup{
   position: relative;
-  top: 3rem !important;
+  top: 4rem !important;
  }
  .signup-form{
   /* margin-bottom: 3rem !important; */
   position: relative;
-  bottom: 8% !important;
+  bottom: 9% !important;
  }
+ .footer-small{
+  position: relative;
+  top: 2.5rem !important;
+ }
+
 
 }
 
