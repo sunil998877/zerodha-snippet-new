@@ -21,7 +21,7 @@ import { router } from "./routes/auth.route.js";
 import { route } from "./routes/auth.profile.js";
 import "./config/passport.js";
 
-// import logoutRoutes from "./routes/user.logout.js";
+import logoutRoutes from "./routes/user.logout.js";
 
 
 const app = express();
@@ -67,7 +67,7 @@ app.get("/", (req, res) => {
 //     res.json({user:req.user});
 // });
 
-// app.use("/api/v1/auth",logoutRoutes);
+app.use("/api/v1/auth",logoutRoutes);
 
 app.use("/api/v1/auth",router);
 app.use("/api/v1/auth",route);

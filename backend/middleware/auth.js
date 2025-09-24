@@ -17,8 +17,7 @@ export const authMiddleware = (req,res,next) =>{
     }
 
     try {
-        const decode = jwt.verify(token,config.KEY.SECRET_KEY);
-        console.log(config.KEY.SECRET_KEY);
+        const decode = jwt.verify(token,(config.KEY && config.KEY.SECRET_KEY) || "SECRET_KEY");
         
         req.user = decode;
         next();

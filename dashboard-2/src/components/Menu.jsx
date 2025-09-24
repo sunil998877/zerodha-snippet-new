@@ -10,22 +10,21 @@ const Menu = () => {
 
   const handleLogout = async () => {
     try {
-      // const token = localStorage.getItem("token");
-      // if (token) {
-      //   await axios.post("http://localhost:3001/api/v1/auth/logout", {}, {
-      //     withCredentials: true,
-      //     headers: {
-      //       Authorization: `Bearer ${token}`
-      //     }
-      //   });
-      // }
+      const token = localStorage.getItem("token");
+      if (token) {
+        await axios.post("http://localhost:3001/api/v1/auth/logout", {}, {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+      }
 
       localStorage.removeItem("token");
-
-      window.location.href = "https://accounts.google.com/Logout";
+      setUser(null);
       window.location.href = "http://localhost:5174/signup_auth";
     } catch (error) {
-      console.error("Logout failed", err);
+      console.error("Logout failed", error);
     }
   }
 
@@ -73,8 +72,6 @@ const Menu = () => {
           setUser(null);
         })
         .finally(() => {
-          localStorage.removeItem('token');  // token remove
-          setUser(null);
           setLoading(false)
         });
     } else {

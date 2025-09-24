@@ -27,11 +27,18 @@ const Signup = async (req, res) => {
         //generate token 
         const token = jwt.sign({ id: user.id, email: user.email }, config.KEY.SECRET_KEY || "SECRET_KEY" , { expiresIn: "3h" });
 
-        res.status(200).json({
-            message: "signup successfully", token, user,
+        res.status(201).json({
             success: true,
             message: "Signup successfully",
-            redirectUrl: `http://localhost:5173/dashboard?token=${token}`,
+            redirectUrl: `${(config.URI && config.URI.FRONTEND_URL) || "http://localhost:5173"}/dashboard?token=${token}`,
+            token,
+            user: {
+                id: user._id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                avatar: user.avatar || null
+            }
         })
     } catch (error) {
         res.status(500).json({ success: false, message: error.message })
@@ -47,17 +54,17 @@ const login = async (req, res) => {
             return res.status(404).json({ message: "user not found" });
         }
 
-        //toke generate
+        const ismatch = await bcrypt.compare(password, User.password);
+        if (!ismatch) {
+            return res.status(400).json({ message: "invalid cridential" });
+        }
+
+        // token generate after successful password verification
         const token = jwt.sign(
             { id: User._id, email: User.email },
             config.KEY.SECRET_KEY || "SECRET_KEY",
             { expiresIn: "1h" }
         );
-
-        const ismatch = await bcrypt.compare(password, User.password);
-        if (!ismatch) {
-            return res.status(400).json({ message: "invalid cridential" });
-        }
 
         res.status(200).json({
             message: "login successfully", token, User: {
