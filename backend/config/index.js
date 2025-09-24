@@ -14,5 +14,8 @@ export default {
   },
   PORT:{
     PORT:process.env.PORT
+  },
+  KEY:{
+         SECRET_KEY:process.env.KEY
   }
 };

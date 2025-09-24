@@ -826,6 +826,13 @@ a {
 }
 
 }
+.Hero1{
+  min-height: 100vh !important;
+}
+.not-found-top {
+    position: relative;
+    bottom: 50% !important;
+}
 
 @media screen and (min-width:1400px){
    .Otp-verified{

@@ -8,12 +8,12 @@
         res.json({
             firstName : req.user.firstName,
             lastName: req.user.lastName,
-            avatar: req.user.avatar,
+            avatar: req.user.avatar || null,
             email:req.user.email
 
         })
     } catch (error) {
-        res.status(403).json({message: error});
+        res.status(403).json({message: error.message});
     }
 }
 

@@ -19,7 +19,7 @@ passport.deserializeUser(async (id, done) => {
 
 
 
-console.log("Google Client ID:", config.PASSPORT.GOOGLE_CLIENT_ID);
+// console.log("Google Client ID:", config.PASSPORT.GOOGLE_CLIENT_ID);
 // google strategy
 passport.use(new GoogleStrategy({
     clientID: config.PASSPORT.GOOGLE_CLIENT_ID,

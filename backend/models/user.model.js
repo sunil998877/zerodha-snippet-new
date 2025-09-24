@@ -10,7 +10,7 @@ const userSchema = Schema({
     lastName:String,
     email: {
         type: String,
-        unique: true,
+        
     },
     password: String,
     avatar: String,

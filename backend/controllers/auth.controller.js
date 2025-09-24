@@ -1,51 +1,76 @@
 import userModel from "../models/user.model.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import config from "../config/index.js";
 
 
 
 
-const Signup = async (req,res) =>{
+const Signup = async (req, res) => {
     try {
-        const {firstName,lastName,email,password} = req.body;
-         
-        const existinger = await userModel.findOne({email});
-        if(existinger){
-          return  res.status(400).json({message : "user already exist"});
+        const { firstName, lastName, email, password } = req.body;
+
+        const existinger = await userModel.findOne({ email });
+        if (existinger) {
+            return res.status(400).json({ message: "user already exist" });
         }
 
-        const hashedpassword = await bcrypt.hash(password,10);
+        const hashedpassword = await bcrypt.hash(password, 10);
 
         const user = await userModel.create({
-            provider:"local",
+            provider: "local",
             firstName,
             lastName,
             email,
-            password:hashedpassword
+            password: hashedpassword
         });
-        res.status(200).json({message:"signup successfully",user})
+        //generate token 
+        const token = jwt.sign({ id: user.id, email: user.email }, config.KEY.SECRET_KEY || "SECRET_KEY" , { expiresIn: "3h" });
+
+        res.status(200).json({
+            message: "signup successfully", token, user,
+            success: true,
+            message: "Signup successfully",
+            redirectUrl: `http://localhost:5173/dashboard?token=${token}`,
+        })
     } catch (error) {
-        res.status(500).json({message: `error.message`})
+        res.status(500).json({ success: false, message: error.message })
     }
 };
 
 // login
-const login = async (req,res) => {
-   try {
-    const {email,password} = req.body;
-     const User = await userModel.findOne({email});
-     if (!User) {
-      return  res.status(404).json({message: "user not found"});
-     }
+const login = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const User = await userModel.findOne({ email });
+        if (!User) {
+            return res.status(404).json({ message: "user not found" });
+        }
 
-     const ismatch  = await bcrypt.compare(password,User.password);
-     if(!ismatch){
-        return res.status(400).json({message:"invalid cridential"});
-     }
+        //toke generate
+        const token = jwt.sign(
+            { id: User._id, email: User.email },
+            config.KEY.SECRET_KEY || "SECRET_KEY",
+            { expiresIn: "1h" }
+        );
 
-     res.status(200).json({message:"login successfully",User})
-   } catch (error) {
-      res.status(500).json({message:error.message});
-   }
+        const ismatch = await bcrypt.compare(password, User.password);
+        if (!ismatch) {
+            return res.status(400).json({ message: "invalid cridential" });
+        }
+
+        res.status(200).json({
+            message: "login successfully", token, User: {
+                id: User._id,
+                firstName: User.firstName,
+                lastName: User.lastName,
+                email: User.email,
+                avatar: User.avatar || null,
+            }
+        })
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
 
 };
 
@@ -69,4 +94,4 @@ const Oath = async (profile,done) =>{
     }
 };
 
-export {login,Signup,Oath};
+export { login, Signup };

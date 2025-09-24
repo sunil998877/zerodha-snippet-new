@@ -12,6 +12,6 @@ router.post("/signup",Signup);
 router.get("/google", passport.authenticate("google",{scope:["profile","email"]}));
 router.get("/google/callback", passport.authenticate("google",{
     successRedirect: `${config.URI.FRONTEND_URL || "http://localhost:5173"}/`,
-    failureRedirect: `${config.URI.FRONTEND_URL || "http://localhost:5173"}/login`
+    failureRedirect: `${config.URI.FRONTEND_URL || "http://localhost:5174"}/login`
 }));
 

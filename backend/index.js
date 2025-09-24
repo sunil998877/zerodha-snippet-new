@@ -21,6 +21,7 @@ import { router } from "./routes/auth.route.js";
 import { route } from "./routes/auth.profile.js";
 import "./config/passport.js";
 
+// import logoutRoutes from "./routes/user.logout.js";
 
 
 const app = express();
@@ -30,11 +31,19 @@ const PORT = config.PORT.PORT || 3001;
 connectDB();
 
 
-// app.use(cors());
+const allowedOrigins = ["http://localhost:5173", "http://localhost:5174"];
+
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: function(origin, callback){
+    if(!origin || allowedOrigins.includes(origin)){
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
+
 app.use(bodyParser.json());
 
 app.use(session({
@@ -54,8 +63,15 @@ app.get("/", (req, res) => {
     res.send("server is running...");
 });
 
+// app.get("/api/v1/auth/profile",authMiddleware,(req,res)=>{
+//     res.json({user:req.user});
+// });
+
+// app.use("/api/v1/auth",logoutRoutes);
+
 app.use("/api/v1/auth",router);
 app.use("/api/v1/auth",route);
+// app.use("/api/v1/auth",logOut);
 
 //insert holding data
 // app.get("/addHoldings", async (req, res) => {
