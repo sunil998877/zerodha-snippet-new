@@ -3,16 +3,17 @@ import axios from "axios";
 // import { useAuth } from "./userAuth";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
+import { endpoints, APP_BASE_URL } from "../config";
 
 const Menu = () => {
-  const [open, setopen] = useState(false);
-  const menuRef = useRef();
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef();
 
   const handleLogout = async () => {
     try {
       const token = localStorage.getItem("token");
       if (token) {
-        await axios.post("http://localhost:3001/api/v1/auth/logout", {}, {
+        await axios.post(endpoints.logout, {}, {
           withCredentials: true,
           headers: {
             Authorization: `Bearer ${token}`
@@ -22,7 +23,9 @@ const Menu = () => {
 
       localStorage.removeItem("token");
       setUser(null);
-      window.location.href = "http://localhost:5174/signup_auth";
+      if (APP_BASE_URL) {
+        window.location.href = `${APP_BASE_URL}/signup_auth`;
+      }
     } catch (error) {
       console.error("Logout failed", error);
     }
@@ -32,8 +35,8 @@ const Menu = () => {
 
   useEffect(() => {
     const handler = (e) => {
-      if (menuRef.current && !menuRef.current.contains(e.target)) {
-        setopen(false);
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsOpen(false);
       }
     };
     document.addEventListener("mousedown", handler);
@@ -62,7 +65,7 @@ const Menu = () => {
     console.log(savedToken);
 
     if (savedToken) {
-      axios.get("http://localhost:3001/api/v1/auth/profile", {
+      axios.get(endpoints.profile, {
         withCredentials: true,
         headers: { Authorization: `Bearer ${savedToken}` }
       })
@@ -127,14 +130,14 @@ const Menu = () => {
         <hr className="border" />
         {!Loading && (
           user ? (
-            <div className="profile">
-              <div className="avatar" ref={menuRef}>
-                <img src={user.avatar || "/assets/react.svg"} alt="Profile" style={{ width: 30, borderRadius: "50%" }} onClick={() => setopen(!open)} />
+            <div className="profile" ref={dropdownRef}>
+              <div className="avatar">
+                <img src={user.avatar || "/assets/react.svg"} alt="Profile" style={{ width: 30, borderRadius: "50%" }} onClick={() => setIsOpen(!isOpen)} />
               </div>
-              {!open && (
+              {isOpen && (
                 <div className="dropdown">
                   <p className="text-center overflow-hidden font-size">
-                    <img src={user.avatar || "dashboard-2/src/assets/react.svg"} alt="Profile" style={{ width: 35, borderRadius: "50%" }} onClick={() => setopen(!open)} /> <br />
+                    <img src={user.avatar || "dashboard-2/src/assets/react.svg"} alt="Profile" style={{ width: 35, borderRadius: "50%" }} onClick={() => setIsOpen(!isOpen)} /> <br />
                     {user.firstName} {user.lastName} <br />
                     {user.email}
                   </p>
@@ -143,7 +146,7 @@ const Menu = () => {
               )}
             </div>
           ) : (
-            <a href="http://localhost:3001/api/v1/auth/google">
+            <a href={endpoints.oauthGoogle}>
               <button className="btn btn-primary rounded-3 login-with-google">Login</button>
             </a>
           )

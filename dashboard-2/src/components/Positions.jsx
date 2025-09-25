@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import axios from "axios";
+import { endpoints } from "../config";
 
 // import { positions } from "../data/data";
 
@@ -10,7 +11,7 @@ const Positions = () => {
 useEffect(()=>{
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://localhost:3001/allPositions");
+      const res = await axios.get(endpoints.positions);
       console.log(res.data);
       setAllPositions(res.data);
     } catch (err) {
