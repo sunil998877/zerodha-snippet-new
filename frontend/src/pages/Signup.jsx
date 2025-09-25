@@ -8,7 +8,7 @@ import axios from "axios";
 // import TextField from '@mui/material/TextField';
 const Signup = () => {
     const handleLogin = () => {
-        const redirectUrl = import.meta.env.VITE_API_BASE || "http://localhost:3001/api/v1/auth/google";
+        const redirectUrl = import.meta.env.VITE_API_BASE || "http://localhost:3001/api/v1/user/google";
         window.location.href = redirectUrl;
 
     };
@@ -41,7 +41,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post("http://localhost:3001/api/v1/auth/signup", { ...input }, { withCredentials: true });
+            const { data } = await axios.post("http://localhost:3001/api/v1/user/signup", { ...input }, { withCredentials: true });
 
 
 

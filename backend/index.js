@@ -67,10 +67,10 @@ app.get("/", (req, res) => {
 //     res.json({user:req.user});
 // });
 
-app.use("/api/v1/auth",logoutRoutes);
+app.use("/api/v1/user",logoutRoutes);
 
-app.use("/api/v1/auth",router);
-app.use("/api/v1/auth",route);
+app.use("/api/v1/user",router);
+app.use("/api/v1/user",route);
 // app.use("/api/v1/auth",logOut);
 
 //insert holding data
