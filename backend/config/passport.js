@@ -24,7 +24,7 @@ passport.deserializeUser(async (id, done) => {
 passport.use(new GoogleStrategy({
     clientID: config.PASSPORT.GOOGLE_CLIENT_ID,
     clientSecret: config.PASSPORT.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:3001/api/v1/auth/google/callback"
+    callbackURL: "http://localhost:3001/api/v1/user/google/callback"
 }, async (accessToken, refreshToken, profile, done) => {
     try {
         let user = await userModel.findOne({ providerId: profile.id, provider: "google" });
