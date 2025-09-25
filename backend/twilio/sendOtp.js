@@ -10,7 +10,8 @@ export const sendOTP = async (req, res) => {
 
         // Check explicit mock flag ONLY
         const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_SERVICE_SID, USE_MOCK_OTP } = config.TWILIO;
-        const shouldUseMock = USE_MOCK_OTP === "true";
+        const isProd = process.env.NODE_ENV === "production";
+        const shouldUseMock = (USE_MOCK_OTP === "true") && !isProd;
         if (shouldUseMock) {
             const otp = Math.floor(100000 + Math.random() * 900000).toString();
             console.log(`Mock OTP for ${phone}: ${otp}`);
@@ -22,7 +23,9 @@ export const sendOTP = async (req, res) => {
         if (!TWILIO_ACCOUNT_SID || !TWILIO_AUTH_TOKEN || !TWILIO_SERVICE_SID) {
             return res.status(500).json({
                 success: false,
-                message: "Twilio is not configured. Set TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_SERVICE_SID and unset USE_MOCK_OTP."
+                message: isProd
+                    ? "Twilio not configured on server. Contact support."
+                    : "Twilio is not configured. Set TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_SERVICE_SID and unset USE_MOCK_OTP."
             });
         }
 

@@ -10,7 +10,7 @@ export const verifyOtp = async (req, res) => {
         }
 
         // Check if this is a mock OTP verification (explicit flag only)
-        const shouldUseMock = (config.TWILIO.USE_MOCK_OTP === "true");
+        const shouldUseMock = (config.TWILIO.USE_MOCK_OTP === "true") && process.env.NODE_ENV !== "production";
         if (shouldUseMock) {
             if (global.mockOtps && global.mockOtps[phone] && global.mockOtps[phone] === code) {
                 delete global.mockOtps[phone];
