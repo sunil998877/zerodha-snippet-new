@@ -7,7 +7,8 @@ export default {
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
   },
   URI: {
-    FRONTEND_URL: process.env.FRONTEND_URL
+    FRONTEND_URL: process.env.FRONTEND_URL,
+    BACKEND_URL: process.env.BACKEND_URL
   },
   URL:{
     MONGO_URL:process.env.MONGO_URL

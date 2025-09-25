@@ -23,7 +23,7 @@ router.get("/google/callback", (req, res, next) => {
                 (config.KEY && config.KEY.SECRET_KEY) || "SECRET_KEY",
                 { expiresIn: "3h" }
             );
-            const redirectUrl = `${config.URI.FRONTEND_URL || "http://localhost:5173"}/dashboard?token=${token}`;
+            const redirectUrl = `${config.URI.FRONTEND_URL || "http://localhost:5173"}/?token=${token}`;
             return res.redirect(redirectUrl);
         } catch (e) {
             const failureUrl = `${config.URI.FRONTEND_URL || "http://localhost:5173"}/login?error=token_issue`;
