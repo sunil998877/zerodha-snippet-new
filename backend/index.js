@@ -33,20 +33,30 @@ connectDB();
 
 const allowedOrigins = [
   "https://zerodha-snippet-new-dashboard.vercel.app",
+  "https://zerodha-snippet-new-dashboard-2.vercel.app",
   "https://zerodha-snippet-new-clone.vercel.app",
+  "http://localhost:5173",
+  "http://localhost:5174",
   config.URI.FRONTEND_URL
 ].filter(Boolean);
 
-app.use(cors({
-  origin: function(origin, callback){
-    if(!origin || allowedOrigins.includes(origin)){
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
+const corsOptions = {
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true);
+    const isAllowed =
+      allowedOrigins.includes(origin) || origin.endsWith(".vercel.app");
+    if (isAllowed) return callback(null, true);
+    return callback(new Error("Not allowed by CORS"));
   },
-  credentials: true
-}));
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+  preflightContinue: false,
+  optionsSuccessStatus: 204
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 app.use(bodyParser.json());
 
