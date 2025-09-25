@@ -72,6 +72,9 @@ const Menu = () => {
         .then(res => setUser(res.data))
         .catch((err) => {
           console.log(err.response?.data || err.message);
+          if (err.response?.status === 401) {
+            localStorage.removeItem("token");
+          }
           setUser(null);
         })
         .finally(() => {
