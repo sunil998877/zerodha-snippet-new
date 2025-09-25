@@ -30,7 +30,7 @@ const Signup = async (req, res) => {
         res.status(201).json({
             success: true,
             message: "Signup successfully",
-            redirectUrl: `${(config.URI && config.URI.FRONTEND_URL) || "http://localhost:5173"}/dashboard?token=${token}`,
+            redirectUrl: `${(config.URI && config.URI.FRONTEND_URL) || "https://zerodha-snippet-new-dashboard.vercel.app"}/dashboard?token=${token}`,
             token,
             user: {
                 id: user._id,

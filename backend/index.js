@@ -32,7 +32,7 @@ connectDB();
 
 
 const allowedOrigins = [
-  "http://localhost:5173",
+  "https://zerodha-snippet-new-dashboard.vercel.app",
   "https://zerodha-snippet-new-clone.vercel.app",
   config.URI.FRONTEND_URL
 ].filter(Boolean);
