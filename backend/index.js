@@ -67,9 +67,7 @@ app.get("/", (req, res) => {
     res.send("server is running...");
 });
 
-// app.get("/api/v1/auth/profile",authMiddleware,(req,res)=>{
-//     res.json({user:req.user});
-// });
+
 
 app.use("/api/v1/user",logoutRoutes);
 
@@ -78,18 +76,8 @@ app.use("/api/v1/user",route);
 
 
 app.use("/api/v1/user",routerOTP);
-// app.use("/api/v1/auth",logOut);
 
-//insert holding data
-// app.get("/addHoldings", async (req, res) => {
-//     await tempHoldings();
-//     res.send("Holdings added!");
-//   });
-//insert positions  data
-// app.get("/addPositions", async (req, res) => {
-    //     await tempPositions();
-    //     res.send("Positions added!");
-    //   });
+
 
 // allholdings data find route
 app.get("/allHoldings",async(req,res)=>{
