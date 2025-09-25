@@ -9,8 +9,8 @@ export const verifyOtp = async (req, res) => {
             return res.status(400).json({ success: false, message: "Phone number and OTP code are required" });
         }
 
-        // Check if this is a mock OTP verification (explicit flag or prior fallback)
-        const shouldUseMock = (config.TWILIO.USE_MOCK_OTP === "true") || (global.mockOtps && global.mockOtps[phone]);
+        // Check if this is a mock OTP verification (explicit flag only)
+        const shouldUseMock = (config.TWILIO.USE_MOCK_OTP === "true");
         if (shouldUseMock) {
             if (global.mockOtps && global.mockOtps[phone] && global.mockOtps[phone] === code) {
                 delete global.mockOtps[phone];
@@ -25,16 +25,9 @@ export const verifyOtp = async (req, res) => {
             config.TWILIO.TWILIO_SERVICE_SID;
 
         if (!isTwilioConfigured) {
-            if (config.TWILIO.USE_MOCK_OTP === "true") {
-                if (global.mockOtps && global.mockOtps[phone] && global.mockOtps[phone] === code) {
-                    delete global.mockOtps[phone];
-                    return res.json({ success: true, message: "OTP verified (mock mode)" });
-                }
-                return res.status(400).json({ success: false, message: "Invalid or expired OTP (mock mode)" });
-            }
             return res.status(500).json({
                 success: false,
-                message: "Twilio service not configured. Please check environment variables."
+                message: "Twilio service not configured. Please set credentials or enable USE_MOCK_OTP explicitly."
             });
         }
 
@@ -51,24 +44,25 @@ export const verifyOtp = async (req, res) => {
         const verificationCheck = await Promise.race([twilioPromise, timeoutPromise]);
 
         if (verificationCheck.status === "approved" || verificationCheck.status === "Approved") {
+            console.log("[Twilio Verify] verify-otp ok:", { to: phone, status: verificationCheck?.status });
             res.json({ success: true, message: "OTP verified successfully" });
         } else {
+            console.warn("[Twilio Verify] verify-otp invalid:", { to: phone, status: verificationCheck?.status });
             res.json({ success: false, message: "Invalid OTP" });
         }
 
     } catch (error) {
-        console.error("OTP verification error:", error);
-        // Graceful fallback: if we have a mock OTP stored for this phone, try verifying it
-        const { phone, code } = req.body || {};
-        if (global.mockOtps && phone && global.mockOtps[phone]) {
-            if (global.mockOtps[phone] === code) {
-                delete global.mockOtps[phone];
-                return res.status(207).json({ success: true, message: "OTP verified (mock fallback)" });
-            }
-            return res.status(400).json({ success: false, message: "Invalid or expired OTP (mock fallback)" });
-        }
+        const twilioInfo = {
+            name: error?.name,
+            code: error?.code,
+            status: error?.status,
+            message: error?.message,
+            moreInfo: error?.moreInfo,
+            details: error?.details
+        };
+        console.error("[Twilio Verify] verify-otp error:", twilioInfo);
         const isTimeout = error?.code === 'ETIMEDOUT' || /timeout/i.test(error?.message || "");
-        const message = isTimeout ? "Twilio connection timed out. Check network/proxy/firewall." : (error?.status ? `Twilio error ${error.status}` : "Failed to verify OTP. Please try again.");
-        res.status(500).json({ success: false, message });
+        const message = isTimeout ? "Twilio connection timed out. Check network/proxy/firewall." : (error?.message || "Failed to verify OTP. Please try again.");
+        res.status(500).json({ success: false, message, twilio: { code: error?.code, status: error?.status } });
     }
 }

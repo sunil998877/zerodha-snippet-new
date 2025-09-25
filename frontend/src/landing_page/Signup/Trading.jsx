@@ -24,8 +24,7 @@ function Trading() {
             // Add country code to phone number
             const phoneWithCountryCode = `+91${phone}`;
 
-            // const data = await fetchUserHello({userId:"23tr2hfhgsfqywr126"});
-            // console.log(data, "data")
+            
             const response = await axios.post(endpoints.sendOtp, { 
                 phone: phoneWithCountryCode
             });
@@ -34,15 +33,7 @@ function Trading() {
                 localStorage.setItem("phone", phone); // save number without country code
                 setShowOtp(true);
                 
-                // Show appropriate message based on response
-                if (response.data.message && response.data.message.includes("Mock OTP")) {
-                    alert("Development Mode: Mock OTP generated! Check the backend console for the OTP code.");
-                } else if (response.data.message && response.data.message.includes("fallback")) {
-                    alert("Network issue detected. Fallback OTP generated! Check the backend console for the OTP code.");
-                } else {
-                    alert("OTP sent successfully to your mobile number!");
-                     
-                }
+                alert("OTP request submitted. Please check your SMS inbox.");
             } else {
                 alert("Failed to send OTP: " + response.data.message);
             }

@@ -8,7 +8,8 @@ import axios from "axios";
 // import TextField from '@mui/material/TextField';
 const Signup = () => {
     const handleLogin = () => {
-        const redirectUrl = import.meta.env.VITE_API_BASE || "https://zerodha-snippet-new-backend.vercel.app/api/v1/user/google";
+        const apiBase = (import.meta.env.VITE_API_BASE_URL) || (window.location.hostname === "localhost" ? "http://localhost:3001" : "https://zerodha-snippet-new-backend.vercel.app");
+        const redirectUrl = `${apiBase}/api/v1/user/google`;
         window.location.href = redirectUrl;
 
     };
@@ -41,7 +42,8 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post("https://zerodha-snippet-new-backend.vercel.app/api/v1/user/signup", { ...input }, { withCredentials: true });
+            const apiBase = (import.meta.env.VITE_API_BASE_URL) || (window.location.hostname === "localhost" ? "http://localhost:3001" : "https://zerodha-snippet-new-backend.vercel.app");
+            const { data } = await axios.post(`${apiBase}/api/v1/user/signup`, { ...input }, { withCredentials: true });
 
 
 
