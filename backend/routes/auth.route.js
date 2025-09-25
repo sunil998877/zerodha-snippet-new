@@ -21,12 +21,12 @@ router.get("/google/callback", (req, res, next) => {
             const token = jwt.sign(
                 { id: user._id, email: user.email },
                 (config.KEY && config.KEY.SECRET_KEY) || "SECRET_KEY",
-                { expiresIn: "3h" }
+                { expiresIn: "1h" }
             );
             const redirectUrl = `${config.URI.FRONTEND_URL || "https://zerodha-snippet-new-dashboard.vercel.app"}/?token=${token}`;
             return res.redirect(redirectUrl);
         } catch (e) {
-            const failureUrl = `${config.URI.FRONTEND_URL || "https://zerodha-snippet-new-dashboard.vercel.app"}/login?error=token_issue`;
+            const failureUrl = `${config.URI.FRONTEND_URL || "https://zerodha-new-project.vercel.app/"}/`;
             return res.redirect(failureUrl);
         }
     })(req, res, next);
