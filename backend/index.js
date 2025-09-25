@@ -12,8 +12,7 @@ import PositionsModel from "./model/PositionsModel.js";
 import HoldingsModel from "./model/HoldingsModel.js";
 import OrdersModel from "./model/OrdersModel.js";
 // import twilio from "twilio";
-import { sendOTP } from "./twilio/sendOtp.js";
-import { verifyOtp } from "./twilio/verifyOtp.js";
+
 
 import session from "express-session";
 import passport from "passport";
@@ -22,6 +21,7 @@ import { route } from "./routes/auth.profile.js";
 import "./config/passport.js";
 
 import logoutRoutes from "./routes/user.logout.js";
+import { routerOTP } from "./routes/auth.Otp.js";
 
 
 const app = express();
@@ -75,6 +75,9 @@ app.use("/api/v1/user",logoutRoutes);
 
 app.use("/api/v1/user",router);
 app.use("/api/v1/user",route);
+
+
+app.use("/api/v1/user",routerOTP);
 // app.use("/api/v1/auth",logOut);
 
 //insert holding data
@@ -106,14 +109,7 @@ app.post("/newOrder", async (req,res)=>{
 
 
 // send OTP
-app.post("/send-otp", async (req,res)=>{
-    await sendOTP(req, res);
-});
 
-// verify otp
-app.post("/verify-otp", async (req,res)=>{
-  await verifyOtp(req,res);
-});
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

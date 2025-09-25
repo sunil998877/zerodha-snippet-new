@@ -3,6 +3,7 @@ import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 import about from "../About/AboutPage";
 import Otp from "./Otp";
+import { endpoints } from "../../config.js";
 // import { fetchUserHello } from "../../services/apiServices";
 // import { SchemaTypeOptions } from "mongoose";
 
@@ -25,7 +26,7 @@ function Trading() {
 
             // const data = await fetchUserHello({userId:"23tr2hfhgsfqywr126"});
             // console.log(data, "data")
-            const response = await axios.post("https://zerodha-snippet-new-backend.vercel.app/send-otp", { 
+            const response = await axios.post(endpoints.sendOtp, { 
                 phone: phoneWithCountryCode
             });
             

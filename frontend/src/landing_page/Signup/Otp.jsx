@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { endpoints } from '../../config.js'
 // import Signup from '../../pages/Signup'
 
 
@@ -21,7 +22,7 @@ export default function Otp() {
             const phoneNumber = localStorage.getItem("phone");
             const phoneWithCountryCode = `+91${phoneNumber}`;
 
-            const response = await axios.post("https://zerodha-snippet-new-backend.vercel.app/verify-otp", {
+            const response = await axios.post(endpoints.verifyOtp, {
                 phone: phoneWithCountryCode,
                 code: otp
             });
