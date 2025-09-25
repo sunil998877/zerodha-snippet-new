@@ -18,5 +18,11 @@ export default {
   },
   KEY:{
          SECRET_KEY:process.env.KEY
+  },
+  TWILIO:{
+    TWILIO_ACCOUNT_SID:process.env.TWILIO_ACCOUNT_SID,
+    TWILIO_AUTH_TOKEN:process.env.TWILIO_AUTH_TOKEN,
+    TWILIO_SERVICE_SID:process.env.TWILIO_SERVICE_SID,
+    USE_MOCK_OTP:process.env.USE_MOCK_OTP
   }
 };

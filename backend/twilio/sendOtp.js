@@ -1,5 +1,6 @@
 import twilio from "twilio";
 
+import config from "../config/index.js";
 
 export const sendOTP = async (req, res) => {
     try {
@@ -8,7 +9,7 @@ export const sendOTP = async (req, res) => {
         if (!phone.startsWith("+")) return res.status(400).json({ success: false, message: "Phone must include country code" });
 
         // Check Twilio credentials or explicit mock flag
-        const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_SERVICE_SID, USE_MOCK_OTP } = process.env;
+        const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_SERVICE_SID, USE_MOCK_OTP } = config.TWILIO;
         const shouldUseMock = USE_MOCK_OTP === "true" || !TWILIO_ACCOUNT_SID || !TWILIO_AUTH_TOKEN || !TWILIO_SERVICE_SID;
         if (shouldUseMock) {
             const otp = Math.floor(100000 + Math.random() * 900000).toString();
