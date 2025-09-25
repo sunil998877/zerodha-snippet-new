@@ -109,6 +109,11 @@ app.post("/newOrder", async (req,res)=>{
 // send OTP
 
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+// In serverless (Vercel), export the app. Locally, start listening.
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+  });
+}
+
+export default app;

@@ -26,7 +26,7 @@ router.get("/google/callback", (req, res, next) => {
             const redirectUrl = `${config.URI.FRONTEND_URL || "https://zerodha-snippet-new-dashboard.vercel.app"}/?token=${token}`;
             return res.redirect(redirectUrl);
         } catch (e) {
-            const failureUrl = `${config.URI.FRONTEND_URL || "https://zerodha-new-project.vercel.app/"}/`;
+            const failureUrl = `${config.URI.FRONTEND_URL || "https://zerodha-new-project.vercel.app"}/signup_auth`;
             return res.redirect(failureUrl);
         }
     })(req, res, next);
