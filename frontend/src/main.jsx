@@ -12,6 +12,7 @@ import ProductPage from './landing_page/Product/ProductPage'
 import SignupPage from './landing_page/Signup/SignupPage.jsx'
 
 import Signup from './pages/mdb.jsx'
+import Login from './pages/Login.jsx'
 import SupportPage from './landing_page/Support/SupportPage'
 import Navbar from './landing_page/Navbar'
 import Footer from './landing_page/Footer'
@@ -35,6 +36,7 @@ function AppRouter() {
         <Route path="/signup" element={<SignupPage/>} />
         
         <Route path="/signup_auth" element={<Signup/>} />
+        <Route path="/login" element={<Login/>} />
         <Route path="/support" element={<SupportPage />} />
         <Route path="*" element={<PageNotfound />} />
         

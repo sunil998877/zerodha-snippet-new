@@ -5,13 +5,11 @@ import "react-toastify/dist/ReactToastify.css";
 // import { Link } from 'react-router-dom';
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { endpoints, APP_BASE_URL } from "../config";
 // import TextField from '@mui/material/TextField';
 const Signup = () => {
     const handleLogin = () => {
-        const apiBase = (import.meta.env.VITE_API_BASE_URL) || (window.location.hostname === "localhost" ? "http://localhost:3001" : "https://zerodha-snippet-new-backend.vercel.app");
-        const redirectUrl = `${apiBase}/api/v1/user/google`;
-        window.location.href = redirectUrl;
-
+        window.location.href = endpoints.oauthGoogle;
     };
     // const navigate = useNavigate();
     const [input, setinput] = useState({
@@ -42,28 +40,22 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const apiBase = (import.meta.env.VITE_API_BASE_URL) || (window.location.hostname === "localhost" ? "http://localhost:3001" : "https://zerodha-snippet-new-backend.vercel.app");
-            const { data } = await axios.post(`${apiBase}/api/v1/user/signup`, { ...input }, { withCredentials: true });
+            const { data } = await axios.post(endpoints.signup, { ...input }, { withCredentials: true });
 
 
 
             const { success } = data;
             if (success) {
-                localStorage.setItem("token", data.token);
-
-                // Yaha check karo token null hai ya kuch aur
-                const storedToken = localStorage.getItem("token");
-                if (storedToken) {
-                    console.log(" Token stored successfully:", storedToken);
-                } else {
-                    console.log("Token is null");
-                }
-
-
                 handleSuccess(data.message);
-
-
-                window.location.href = data.redirectUrl;
+                if (data.token) {
+                    localStorage.setItem("token", data.token);
+                    if (APP_BASE_URL) {
+                        window.location.href = `${APP_BASE_URL}/?token=${data.token}`;
+                        return;
+                    }
+                }
+                // If signup succeeded but token not returned, send to login page to continue
+                window.location.href = "http://localhost:5173/login";
             }
             else {
                 handleError(data.message);

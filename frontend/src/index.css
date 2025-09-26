@@ -804,8 +804,9 @@ a {
   width: 80rem !important;
   
 }
-}
 
+
+}
 /* large */
 @media (max-width: 1024px){
   .signup-form{
@@ -813,6 +814,8 @@ a {
     position: relative;
     bottom: 1%;
   }
+
+ 
 }
 @media screen and (min-width: 1200px) {
   .Otp-verified{
@@ -824,6 +827,10 @@ a {
     
     height: 50px !important;
 }
+.login-form{
+  position: relative ;
+  bottom: 50% !important;
+ }
 
 }
 .Hero1{
@@ -858,10 +865,84 @@ a {
   top: 2.5rem !important;
  }
 
+ 
+
+
+}
+
+.container-login{
+}
+
+/* Push login page slightly lower when centered */
+.container-login.auth-center{
+  align-items: flex-start;
+  padding-top: 100px;
+}
+ 
+
+
+
+
+
+
+
+
+/* Center auth pages (Login, mdb) on sm/md/lg */
+.auth-center-login{
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5.5%;
+}
+.auth-center{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.auth-center .signup-form{
+  position: static !important;
+  top: auto !important;
+  bottom: auto !important;
+  margin-top: 0 !important;
+}
+@media (max-width: 767px){
+  .auth-center{
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  .auth-center .signup-form{
+    position: static !important;
+    top: auto !important;
+    bottom: auto !important;
+    margin-top: 0 !important;
+  }
 
 }
 
 
+/* ===== Disable responsive overrides for mdb.jsx and login.jsx ===== */
+/* Keep auth pages consistent across screen sizes */
+.auth-center,
+.container-login{
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
 
+.auth-center .signup-form,
+.container-login .signup-form{
+  position: static !important;
+  top: auto !important;
+  bottom: auto !important;
+  margin-top: 0 !important;
+}
 
-
+.img-sign,
+.img-signup{
+  width: auto !important;
+  height: auto !important;
+  max-height: none !important;
+  position: static !important;
+}
+/* ================================================================ */

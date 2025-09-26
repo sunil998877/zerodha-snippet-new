@@ -24,7 +24,7 @@ const Menu = () => {
       localStorage.removeItem("token");
       setUser(null);
       if (APP_BASE_URL) {
-        window.location.href = `${APP_BASE_URL}/signup_auth`;
+        window.location.href = `${APP_BASE_URL}/login`;
       }
     } catch (error) {
       console.error("Logout failed", error);
@@ -50,42 +50,36 @@ const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
 
   useEffect(() => {
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get("token");
-    if (token) {
-      localStorage.setItem("token", token);
-      window.history.replaceState({}, document.title, window.location.pathname);
-    }
-
-
-
-    //  Profile fetch karna using saved token ---
-    const savedToken = localStorage.getItem("token");
-    console.log(savedToken);
-
-    if (savedToken) {
-      axios.get(endpoints.profile, {
-        withCredentials: true,
-        headers: { Authorization: `Bearer ${savedToken}` }
-      })
-        .then(res => setUser(res.data))
-        .catch((err) => {
-          console.log(err.response?.data || err.message);
-          if (err.response?.status === 401) {
-            localStorage.removeItem("token");
-          }
-          setUser(null);
-        })
-        .finally(() => {
-          setLoading(false)
+    const fetchProfile = async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get("token");
+      if (token) {
+        localStorage.setItem("token", token);
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+  
+      const savedToken = localStorage.getItem("token");
+      console.log(savedToken);
+      
+      if (!savedToken) return setLoading(false);
+  
+      try {
+        const res = await axios.get(endpoints.profile, {
+          headers: { Authorization: `Bearer ${savedToken}` }
         });
-    } else {
-
-      setLoading(false);
-    }
-
+        setUser(res.data);
+      } catch (err) {
+        console.log(err.response?.data || err.message);
+        if (err.response?.status === 401) localStorage.removeItem("token");
+        setUser(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    fetchProfile();
   }, []);
+  
 
   const handleMenuClick = (index) => {
     setSelectedMenu(index);
