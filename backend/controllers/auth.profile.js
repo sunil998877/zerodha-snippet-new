@@ -10,13 +10,15 @@ const profile = async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
-        res.json({
-            id: user._id,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            avatar: user.avatar || null,
-            email: user.email
-        });
+
+        res.json(user);
+        // res.json({
+        //     id: user._id,
+        //     firstName: user.firstName,
+        //     lastName: user.lastName,
+        //     avatar: user.avatar || null,
+        //     email: user.email
+        // });
     } catch (error) {
         res.status(403).json({ message: error.message });
     }

@@ -1,13 +1,13 @@
-const inferDefaultBaseUrl = () => {
-  try {
-    if (typeof window !== "undefined" && window.location && window.location.hostname === "localhost") {
-      return "http://localhost:3001";
-    }
-  } catch {}
-  return "https://zerodha-snippet-new-backend.vercel.app";
-};
+// const inferDefaultBaseUrl = () => {
+//   try {
+//     if (typeof window !== "undefined" && window.location && window.location.hostname === "localhost") {
+//       return "http://localhost:3001";
+//     }
+//   } catch {}
+//   return "https://zerodha-snippet-new-backend.vercel.app";
+// };
 
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || inferDefaultBaseUrl();
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3001";
 // export const AUTH_BASE_URL = import.meta.env.VITE_AUTH_BASE_URL || API_BASE_URL;
 export const APP_BASE_URL = import.meta.env.VITE_APP_BASE_URL || "";
 

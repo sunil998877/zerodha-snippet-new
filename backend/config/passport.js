@@ -24,25 +24,50 @@ passport.deserializeUser(async (id, done) => {
 passport.use(new GoogleStrategy({
     clientID: config.PASSPORT.GOOGLE_CLIENT_ID,
     clientSecret: config.PASSPORT.GOOGLE_CLIENT_SECRET,
-    callbackURL: `${config.URI.BACKEND_URL || "http://localhost:3001"}/api/v1/user/google/callback`
+    callbackURL: "http://localhost:3001/api/v1/user/google/callback" || "https://zerodha-snippet-new-backend.vercel.app/api/v1/user/google/callback"
 }, async (accessToken, refreshToken, profile, done) => {
     try {
-        let user = await userModel.findOne({ providerId: profile.id, provider: "google" });
+        const email = profile?.emails?.[0]?.value?.toLowerCase().trim();
+
+        let user = await userModel.findOne({
+            $or: [
+                { providerId: profile.id },
+                { email: email }
+            ]
+        });
 
         if (!user) {
             user = await userModel.create({
                 provider: "google",
                 providerId: profile.id,
-                firstName: profile.name?.givenName || "",
-                lastName: profile.name?.familyName || "",
-                // email:profile.email?.[0]?.value,
-                email: profile.emails?.[0]?.value || undefined,
-
-                avatar: profile.photos?.[0]?.value
-
+                firstName: profile?.name?.givenName?.trim() || "",
+                lastName: profile?.name?.familyName?.trim() || "",
+                email: email,
+                avatar: profile?.photos?.[0]?.value || null
             });
-
+        } else {
+            // Optional: Update missing providerId if not already linked
+            if (!user.providerId) {
+                user.providerId = profile.id;
+                user.provider = "google";
+                await user.save();
+            }
         }
+
+        // let user = await userModel.findOne({ providerId: profile.id, provider: "google" });
+
+        // if (!user) {
+        //     user = await userModel.create({
+        //         provider: "google",
+        //         providerId: profile.id,
+        //         firstName: profile?.name?.givenName?.trim() || "",
+        //         lastName: profile?.name?.familyName?.trim() || "",
+        //         email: profile?.emails?.[0]?.value?.toLowerCase().trim() || undefined,
+        //         avatar: profile?.photos?.[0]?.value || null
+        //     });
+
+
+        
         return done(null, user);
     } catch (error) {
         return done(error, null);

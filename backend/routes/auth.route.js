@@ -12,37 +12,32 @@ router.post("/signup",Signup);
 
 // Start Google OAuth with optional app base in state
 // Google login
+const DASHBOARD_BASE_URL = config.URL.DASHBOARD_URL || "http://localhost:5174";
+const FRONTEND_BASE_URL = config.URI.FRONTEND_URL || "http://localhost:5173";
+
 router.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 
-// Helper: pick safe frontend base
-const getBase = (req) => {
-  const allowed = [
-    config.URI.FRONTEND_URL,
-    "https://zerodha-snippet-new-dashboard.vercel.app",
-    "http://localhost:5173",
-    "http://localhost:5173",
-  ].filter(Boolean);
-  return allowed.includes(req.headers.origin)
-    ? req.headers.origin
-    : config.URI.FRONTEND_URL || allowed[0];
-};
-
-// Google callback
 router.get("/google/callback", (req, res, next) => {
-    passport.authenticate("google", { session: false }, (err, user) => {
-      const base = getBase(req);
-      if (err || !user) return res.redirect(`${base}/login`);
+  passport.authenticate("google", { session: false }, (err, user) => {
+    console.log(err);
+    console.log(user);
+    
+    if (err || !user) return res.redirect(`${FRONTEND_BASE_URL}/login`);
 
-      const token = jwt.sign(
-        { id: user.id, email: user.email },
-        (config.KEY && config.KEY.SECRET_KEY) || "SECRET_KEY",
-        { expiresIn: "1h" }
-      );
+    const secret =  config.KEY.SECRET_KEY || "SECRET_KEY";
+    if (!secret) {
+      console.error("JWT secret missing");
+      return res.status(500).send("Internal server error");
+    }
 
-      console.log(token);
+    const token = jwt.sign(
+      { id: user.id, email: user.email },
+      secret,
+      { expiresIn: "3h" }
+    );
 
-      // Redirect back to the caller base without using OAuth state
-      res.redirect(`${base}/?token=${token}`);
-    })(req, res, next);
-  });
+    res.redirect(`${DASHBOARD_BASE_URL}/?token=${token}`);
+  })(req, res, next);
+});
+
   

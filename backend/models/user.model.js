@@ -10,7 +10,10 @@ const userSchema = Schema({
     lastName:String,
     email: {
         type: String,
-        
+        unique: true,
+    sparse: true, // allows null values without throwing duplicate errors
+    lowercase: true,
+    trim: true
     },
     password: String,
     avatar: String,

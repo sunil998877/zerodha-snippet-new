@@ -3,8 +3,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import config from "../config/index.js";
 
-const signJwt = (payload, expiresIn = "1h") =>
-    jwt.sign(payload, (config.KEY && config.KEY.SECRET_KEY) || "SECRET_KEY", { expiresIn });
+const signJwt = (payload, expiresIn = "3h") =>
+    jwt.sign(payload, config.KEY.SECRET_KEY || "SECRET_KEY", { expiresIn });
 
 const buildUserResponse = (user) => ({
     id: user._id,
